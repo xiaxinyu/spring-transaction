@@ -20,9 +20,10 @@ public class UserServiceTest {
 
     @Test
     public void test_add_user() {
-        //DataSourceTransactionManager
         User user = User.builder().name("winner").age(19).build();
         userService.add(user);
+
+        int i = 1/0;
         Assert.assertNotNull(user.getId());
     }
 

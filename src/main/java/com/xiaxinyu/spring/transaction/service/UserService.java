@@ -25,6 +25,8 @@ public class UserService {
                 log.info("Add user is finishing");
             }
         });
+
+        int i = 1/0;
         return user;
     }
 
