@@ -2,7 +2,9 @@ package com.xiaxinyu.spring.transaction.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.xiaxinyu.spring.transaction.mapper.CourseMapper;
 import com.xiaxinyu.spring.transaction.mapper.UserMapper;
+import com.xiaxinyu.spring.transaction.model.Course;
 import com.xiaxinyu.spring.transaction.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,26 +13,30 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronizationAdapter;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+/**
+ * @author summer
+ * @date 2020.8.10
+ */
 @Slf4j
 @Service
-public class UserService {
+public class CourseService {
     @Autowired
-    UserMapper userMapper;
+    CourseMapper courseMapper;
 
     @Transactional(rollbackFor = Exception.class)
-    public User add(User user) {
-        log.info("=== Starting adding user ===");
-        userMapper.insert(user);
-        log.info("=== Ending adding user ===");
-        return user;
+    public Course add(Course course) {
+        log.info("=== Starting adding course ===");
+        courseMapper.insert(course);
+        log.info("=== Starting adding course ===");
+        return course;
     }
 
-    public User find(Integer id) {
-        return userMapper.selectById(id);
+    public Course find(Integer id) {
+        return courseMapper.selectById(id);
     }
 
     public void deleteAll(){
         LambdaQueryWrapper query = Wrappers.lambdaQuery();
-        userMapper.delete(query);
+        courseMapper.delete(query);
     }
 }
